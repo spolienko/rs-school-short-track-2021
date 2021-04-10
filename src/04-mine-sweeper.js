@@ -21,6 +21,21 @@
  *  [1, 1, 1]
  * ]
  */
+// function minesweeper(matrix) {
+//   throw new Error('Not implemented');
+//   const result = matrix;
+//   for (let x = 0; x < result.length; x++) {
+//     for (let y = 0; y < result[x].length; y++) {
+//       if (result[x][y] === true) {
+//         result[x][y] = 1;
+//       } else {
+//         result[x][y] = 2;
+//       }
+//     }
+//   }
+//   return result;
+// }
+
 function minesweeper(/* matrix */) {
   throw new Error('Not implemented');
 }
