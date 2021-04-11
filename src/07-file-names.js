@@ -14,31 +14,27 @@
  *
  */
 
-// function findAndChange(names, filename) {
-//   let count = 0;
-//   const array = names;
-//   for (let i = 0; i < array.length; i++) {
-//     if (array[i] === filename) {
-//       count++;
-//       if (count > 1) {
-//         array[i] += `(${count - 1})`;
-//       }
-//     }
-//   }
-//   return array;
-// }
+function findAndChange(names, filename) {
+  let count = 0;
+  const array = names;
 
-// function renameFiles(names) {
-//   throw new Error('Not implemented');
-//   let result = [];
-//   for (let i = 0; i < names.length; i++) {
-//     result = findAndChange(names, names[i]);
-//   }
-//   return result;
-// }
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === filename) {
+      count++;
+      if (count > 1) {
+        array[i] += (`(${count - 1})`);
+      }
+    }
+  }
+  return array;
+}
 
-function renameFiles(/* names */) {
-  throw new Error('Not implemented');
+function renameFiles(names) {
+  let result = [];
+  for (let i = 0; i < names.length; i++) {
+    result = findAndChange(names, names[i]);
+  }
+  return result;
 }
 
 module.exports = renameFiles;
