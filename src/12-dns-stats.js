@@ -21,35 +21,30 @@
  *
  */
 
-// function reverseStr(str) {
-//   return str.split('.').reverse().join('.');
-// }
+function getSubdomains(domains) {
+  let r = [''];
+  const res = [];
+  for (let i = 0; i < domains.length; i++) {
+    r = [r, domains[i]].join('.');
+    res.push(r);
+  }
+  return res;
+}
 
-// function substringSearch(array) {
-//   const objDomains = {};
-//   for (let i = 0; i < array.length; i++) {
-//     let count = 0;
-//     for (let y = 1; y < array[i].length; y++) {
-//       if (array[i][y] !== '.') {
-//         count++;
-//       }
-//       const key = array[i][y].splice(y - count, count + 1);
-//       if (objDomains.hasOwnProperty(key) === false) {
-//         objDomains[key] = 1;
-//       }
-//     }
-//   }
-//   return objDomains;
-// }
+function creatStats(keys) {
+  return Object.assign(...keys.map((value, _index, array) => (
+    { [value]: array.filter((k) => k === value).length })));
+}
 
-// function getDNSStats(domains) {
-//   let array = domains;
-//   array = array.map((element) => reverseStr(element));
-//   const obj = substringSearch(array);
-// }
-
-function getDNSStats(/* domains */) {
-  throw new Error('Not implemented');
+function getDNSStats(domains) {
+  if (domains.length === 0) return {};
+  let keys = [];
+  const d = domains.map((element) => element.split('.').reverse());
+  for (let i = 0; i < d.length; i++) {
+    const subdomains = getSubdomains(d[i]);
+    keys = [...keys, ...subdomains];
+  }
+  return creatStats(keys);
 }
 
 module.exports = getDNSStats;
